@@ -19,6 +19,7 @@ gem 'turbolinks', '5.0.0'
 gem 'jbuilder', '2.4.1'
 gem 'bootstrap-sass', '~>3.3.5.1'
 gem 'sprockets'
+gem 'bcrypt', '3.1.11'
 
 
 group :development, :test do
