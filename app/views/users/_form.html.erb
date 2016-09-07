@@ -1,0 +1,26 @@
+<%= form_for (@user) do |f| %>
+    <%= render 'shared/error_message' %>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true, class:"form-control" %>
+    <br/>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class:"form-control" %>
+    <br/>
+    <%= f.label :email %>
+    <%= f.email_field :email, class:"form-control" %>
+    <br/>
+    <%= f.label :password %>
+    <%= f.password_field :password, class:"form-control" %>
+    <br/>
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation, class:"form-control" %>
+    <br/>
+    <br/>
+    <%if @user.new_record? %>
+        <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <%else%>
+        <%= f.submit "Update my account", class: "btn btn-primary" %>
+    <% end %>
+
+  <%end%>

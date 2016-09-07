@@ -1,0 +1,9 @@
+<h1>This is the show page for:</h1>
+
+<ul>
+  <li>User id: <%=@user.id%></li>
+  <li>User first name: <%=@user.first_name%></li>
+  <li>User last name: <%=@user.last_name%></li>
+</ul>
+
+<%=link_to "Edit your account", edit_user_path(@user), class:'btn btn-primary'%>
