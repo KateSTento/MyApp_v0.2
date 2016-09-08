@@ -10,6 +10,7 @@
     <%= f.label :email %>
     <%= f.email_field :email, class:"form-control" %>
     <br/>
+    <%if @user.new_record? %>
     <%= f.label :password %>
     <%= f.password_field :password, class:"form-control" %>
     <br/>
@@ -17,7 +18,7 @@
     <%= f.password_field :password_confirmation, class:"form-control" %>
     <br/>
     <br/>
-    <%if @user.new_record? %>
+    
         <%= f.submit "Create my account", class: "btn btn-primary" %>
     <%else%>
         <%= f.submit "Update my account", class: "btn btn-primary" %>
