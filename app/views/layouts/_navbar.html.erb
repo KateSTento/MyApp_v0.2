@@ -5,7 +5,13 @@
       </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><%=link_to "Users Index", users_path %></li>
+        <% if current_user %>
+          <li><%= link_to current_user.first_name, current_user %></li>
+          <li><%=link_to "Users Index", users_path %></li>
+          <li> <%= link_to "Sign Out", session_path, method: :delete%> </li>
+        <% else %> 
+         <li><%=link_to "Sign In", new_session_path %></li>
+        <% end %>
       </ul>
     </div><!-- /.container-fluid -->
 </nav>
