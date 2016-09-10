@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 before_action :require_login, except: [:new, :create]
 before_action :require_correct_user, only: [:edit, :update, :destroy]
+
+  
   def index
     @users = User.all 
   end
@@ -16,9 +18,9 @@ before_action :require_correct_user, only: [:edit, :update, :destroy]
   def create
     @user = User.new(user_params)
       if @user.save
-        log_in(@user)
-        flash[:success] = "Thanks for signing up!"
-        redirect_to @user
+        @user.send_activation_email
+        flash[:info] = "Please check your email to activate your account!"
+        redirect_to root_url
       else
         render :new
       end
@@ -49,7 +51,7 @@ before_action :require_correct_user, only: [:edit, :update, :destroy]
   private
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :remember_digest)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 
     def require_correct_user
@@ -59,4 +61,7 @@ before_action :require_correct_user, only: [:edit, :update, :destroy]
         redirect_to root_url
       end
     end
+
+   
+
 end

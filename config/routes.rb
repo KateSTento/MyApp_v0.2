@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "home" => "static_pages#home"
   resources :users
   resource :session
+  resources :account_activations, only: [:edit]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
